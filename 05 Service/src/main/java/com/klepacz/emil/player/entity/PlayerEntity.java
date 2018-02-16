@@ -13,7 +13,25 @@ public class PlayerEntity {
     private String surname;
     private Integer age;
 
+    @ManyToOne
+    private TeamEntity team;
+
+    public TeamEntity getTeam() {
+        return team;
+    }
+
+    public void setTeam(TeamEntity team) {
+        this.team = team;
+    }
+
     public PlayerEntity(){
+    }
+
+    public PlayerEntity(String name, String surname, Integer age, TeamEntity team) {
+        this.name = name;
+        this.surname = surname;
+        this.age = age;
+        this.team = team;
     }
 
     public PlayerEntity(String name, String surname, Integer age) {

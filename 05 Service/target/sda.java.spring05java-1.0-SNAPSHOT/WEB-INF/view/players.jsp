@@ -20,6 +20,7 @@
         <th><spring:message code="players.surname"/></th>
         <th><spring:message code="players.age"/></th>
         <th><spring:message code="players.id"/></th>
+        <th><spring:message code="players.team"/></th>
     </tr>
 
     <form:form method="post" modelAttribute="player" action="/players/action">
@@ -29,6 +30,7 @@
             <td>${player.surname}</td>
             <td>${player.age}</td>
             <td>${player.id}</td>
+            <td>${player.teamName}</td>
             <td>
                 <button type="submit" class="btn btn-default" value="${player.id}" name="removeById"><spring:message
                         code="players.remove"/></button>

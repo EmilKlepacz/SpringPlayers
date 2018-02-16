@@ -27,6 +27,24 @@ public class Player {
     @Min(1)
     private Integer age;
 
+    private String teamName;
+
+    public String getTeamName() {
+        return teamName;
+    }
+
+    public void setTeamName(String teamName) {
+        this.teamName = teamName;
+    }
+
+    public Player(Integer id, String name, String surname, Integer age, String teamName) {
+        this.id = id;
+        this.name = name;
+        this.surname = surname;
+        this.age = age;
+        this.teamName = teamName;
+    }
+
     public Player() {
     }
 

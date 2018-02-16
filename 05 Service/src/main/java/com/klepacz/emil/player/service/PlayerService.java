@@ -3,6 +3,7 @@ package com.klepacz.emil.player.service;
 import com.klepacz.emil.player.entity.PlayerEntity;
 import com.klepacz.emil.player.model.Player;
 import com.klepacz.emil.player.repository.PlayerRepository;
+import com.klepacz.emil.player.repository.TeamRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -17,6 +18,7 @@ import static com.google.common.base.Preconditions.checkNotNull;
 @Service
 public class PlayerService {
     private final PlayerRepository playerRepository;
+    private final TeamRepository teamRepository;
 //    private final List<Player> players = new ArrayList<>(Arrays.asList(new Player("Emil", "Klepacz", 23), new Player("David", "Beckham", 44)));
 
     public List<Player> getAllPlayers() {
@@ -27,8 +29,9 @@ public class PlayerService {
         return playerRepository.findById(id).map(playerEntity -> toPlayerDto(playerEntity));
     }
 
-    public PlayerService(PlayerRepository playerRepository) {
+    public PlayerService(PlayerRepository playerRepository, TeamRepository teamRepository) {
         this.playerRepository = playerRepository;
+        this.teamRepository = teamRepository;
     }
 
     public void add(Player player) {
@@ -50,7 +53,7 @@ public class PlayerService {
     }
 
     private Player toPlayerDto(PlayerEntity entity) {
-        return new Player(entity.getId(), entity.getName(), entity.getSurname(), entity.getAge());
+        return new Player(entity.getId(), entity.getName(), entity.getSurname(), entity.getAge(), entity.getTeam() == null ? "" : entity.getTeam().getName());
     }
 
     private List<Player> toPlayerDto(List<PlayerEntity> entities) {

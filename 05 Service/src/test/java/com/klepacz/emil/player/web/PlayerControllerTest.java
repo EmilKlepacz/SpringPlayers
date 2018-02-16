@@ -2,6 +2,7 @@ package com.klepacz.emil.player.web;
 
 import com.klepacz.emil.player.model.Player;
 import com.klepacz.emil.player.repository.PlayerRepository;
+import com.klepacz.emil.player.repository.TeamRepository;
 import com.klepacz.emil.player.service.PlayerService;
 import org.assertj.core.api.SoftAssertions;
 import org.junit.Test;
@@ -23,7 +24,8 @@ import static org.springframework.test.web.servlet.setup.MockMvcBuilders.standal
 
 public class PlayerControllerTest {
     private final PlayerRepository repository = mock(PlayerRepository.class);
-    private final PlayerService service = new PlayerService(repository);
+    private final TeamRepository teamRepository = mock(TeamRepository.class);
+    private final PlayerService service = new PlayerService(repository, teamRepository);
     private final MessageSource messageSource = new MessageSource() {
         @Override
         public String getMessage(String s, @Nullable Object[] objects, @Nullable String s1, Locale locale) {

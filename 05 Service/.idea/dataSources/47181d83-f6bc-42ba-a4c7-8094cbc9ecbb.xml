@@ -9,8 +9,8 @@
     </database>
     <schema id="3" parent="2" name="public">
       <ObjectId>2200</ObjectId>
-      <IntrospectionTimestamp>2018-02-09.19:04:28.608</IntrospectionTimestamp>
-      <IntrospectionStateNumber>634</IntrospectionStateNumber>
+      <IntrospectionTimestamp>2018-02-16.20:44:35.592</IntrospectionTimestamp>
+      <IntrospectionStateNumber>818</IntrospectionStateNumber>
       <Current>1</Current>
       <Visible>1</Visible>
     </schema>
@@ -34,41 +34,85 @@
       <StateNumber>634</StateNumber>
       <SequenceIdentity>1</SequenceIdentity>
     </sequence>
-    <table id="10" parent="3" name="players">
+    <sequence id="10" parent="3" name="teams_id_seq">
+      <ObjectId>65545</ObjectId>
+      <StateNumber>814</StateNumber>
+      <SequenceIdentity>1</SequenceIdentity>
+    </sequence>
+    <table id="11" parent="3" name="players">
       <ObjectId>57356</ObjectId>
-      <StateNumber>634</StateNumber>
+      <StateNumber>818</StateNumber>
     </table>
-    <column id="11" parent="10" name="id">
+    <table id="12" parent="3" name="teams">
+      <ObjectId>65547</ObjectId>
+      <StateNumber>818</StateNumber>
+    </table>
+    <column id="13" parent="11" name="id">
       <Position>1</Position>
       <DataType>integer|0</DataType>
       <NotNull>1</NotNull>
       <StateNumber>634</StateNumber>
       <DefaultExpression>nextval(&apos;players_id_seq&apos;::regclass)</DefaultExpression>
     </column>
-    <column id="12" parent="10" name="name">
+    <column id="14" parent="11" name="name">
       <Position>2</Position>
       <DataType>varchar(100)|0</DataType>
       <StateNumber>634</StateNumber>
     </column>
-    <column id="13" parent="10" name="surname">
+    <column id="15" parent="11" name="surname">
       <Position>3</Position>
       <DataType>varchar(100)|0</DataType>
       <StateNumber>634</StateNumber>
     </column>
-    <column id="14" parent="10" name="age">
+    <column id="16" parent="11" name="age">
       <Position>4</Position>
       <DataType>integer|0</DataType>
       <StateNumber>634</StateNumber>
     </column>
-    <index id="15" parent="10" name="players_pkey">
+    <column id="17" parent="11" name="team_id">
+      <Position>5</Position>
+      <DataType>integer|0</DataType>
+      <StateNumber>817</StateNumber>
+    </column>
+    <index id="18" parent="11" name="players_pkey">
       <ObjectId>57360</ObjectId>
       <ColNames>id</ColNames>
       <Unique>1</Unique>
     </index>
-    <key id="16" parent="10" name="players_pkey">
+    <key id="19" parent="11" name="players_pkey">
       <ObjectId>57361</ObjectId>
       <ColNames>id</ColNames>
       <UnderlyingIndexName>players_pkey</UnderlyingIndexName>
+      <Primary>1</Primary>
+    </key>
+    <foreign-key id="20" parent="11" name="fk_teamsplayers">
+      <ObjectId>65553</ObjectId>
+      <ColNames>team_id</ColNames>
+      <RefTableName>teams</RefTableName>
+      <RefKeyName>teams_pkey</RefKeyName>
+      <RefColNames>id</RefColNames>
+    </foreign-key>
+    <column id="21" parent="12" name="id">
+      <Position>1</Position>
+      <DataType>integer|0</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>814</StateNumber>
+      <DefaultExpression>nextval(&apos;teams_id_seq&apos;::regclass)</DefaultExpression>
+    </column>
+    <column id="22" parent="12" name="name">
+      <Position>2</Position>
+      <DataType>varchar(100)|0</DataType>
+      <StateNumber>814</StateNumber>
+    </column>
+    <index id="23" parent="12" name="teams_pkey">
+      <ObjectId>65551</ObjectId>
+      <ColNames>id</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <key id="24" parent="12" name="teams_pkey">
+      <ObjectId>65552</ObjectId>
+      <ColNames>id</ColNames>
+      <UnderlyingIndexName>teams_pkey</UnderlyingIndexName>
       <Primary>1</Primary>
     </key>
   </database-model>
